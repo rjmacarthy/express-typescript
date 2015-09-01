@@ -12,7 +12,6 @@ class config {
 
 	public static globFiles(location : string) : Q.Promise<string[]> {
 		var d = Q.defer<string[]>()
-		var routes = [];
 		glob(location, function(err, files) {
 			if(err){
 				d.reject(err);

@@ -29,9 +29,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 //Routes
 
 config.globFiles('routes/**/*.js').then((files: Array<string>) => {
-  _.forEach(files, (file: string) => {
+ 
+  for(var file of files){
     require(path.resolve(file))(app);
-  });
+  }
 
   // catch 404 and forward to error handler
   app.use(function(req: express.Request, res: express.Response, next: Function) {

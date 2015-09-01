@@ -6,8 +6,11 @@ import favicon = require('serve-favicon');
 import logger = require('morgan');
 import cookieParser = require('cookie-parser');
 import bodyParser = require('body-parser');
+import http = require('http');
 
-var app = express();
+import index = require('./routes/index.server.route');
+
+var app: express.Express = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -21,32 +24,50 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//Routes
+
+app.use('/', index);
+
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err['status'] = 404;
+app.use(function(req: express.Request, res: express.Response, next: Function) {
+  var err: Error = new Error('Not Found');
   next(err);
 });
 
 if (app.get('env') === 'development') {
-   app.use((err: any, req, res, next) => {
-       res.status(err['status'] || 500);
-       res.render('error', {
-           message: err.message,
-           error: err
-       });
-   });
+  app.use((err: Error, req: express.Request, res: express.Response, next) => {
+    res.status(err['status'] || 500);
+    res.render('error', {
+      message: err.message,
+      error: err
+    });
+  });
 }
 
 // production error handler
 // no stacktraces leaked to user
-app.use((err: any, req, res, next) => {
-   res.status(err.status || 500);
-   res.render('error', {
-       message: err.message,
-       error: {}
-   });
+app.use((err: any, req: express.Request, res: express.Response, next) => {
+  res.status(err.status || 500);
+  res.render('error', {
+    message: err.message,
+    error: {}
+  });
 });
 
+// Start ther server
+
+var port : number = 3000;
+
+var server : http.Server = http.createServer(app);
+
+server.listen(port);
+
+server.on('error', () => {
+  console.log('error starting server');
+})
+
+server.on('listening', () => {
+  console.log('started on port ' + port);
+})
 
 module.exports = app;

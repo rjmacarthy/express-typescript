@@ -7,7 +7,7 @@ import logger = require('morgan');
 import cookieParser = require('cookie-parser');
 import bodyParser = require('body-parser');
 import http = require('http');
-
+import config = require('./config');
 import index = require('./routes/index.server.route');
 
 var app: express.Express = express();
@@ -56,9 +56,9 @@ app.use((err: any, req: express.Request, res: express.Response, next) => {
 
 // Start ther server
 
-var port : number = 3000;
+var port: number = 3000;
 
-var server : http.Server = http.createServer(app);
+var server: http.Server = http.createServer(app);
 
 server.listen(port);
 

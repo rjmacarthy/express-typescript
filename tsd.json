@@ -25,6 +25,9 @@
     },
     "debug/debug.d.ts": {
       "commit": "32f0a90dab26f70b206407ac24d4d622d0f0f408"
+    },
+    "glob/glob.d.ts": {
+      "commit": "af76bf46025371c760d8fe8c03cf874428da6124"
     }
   }
 }

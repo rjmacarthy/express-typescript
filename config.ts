@@ -4,12 +4,9 @@ import glob = require('glob');
 import Q = require('q');
 
 class config {
-	public files: any = {};
-
 	constructor() {
-
 	}
-
+	
 	public static globFiles(location : string) : Q.Promise<string[]> {
 		var d = Q.defer<string[]>()
 		glob(location, function(err, files) {

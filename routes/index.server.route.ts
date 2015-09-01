@@ -1,8 +1,8 @@
 /// <reference path='../typings/tsd.d.ts' />
 import express = require('express');
+import index = require('../controllers/index.server.controller');
 
 export = function(app : express.Express) {
-	app.route('/').get(function(req, res, next){
-	  res.render('index', { title: 'Express' });
-	});
+	app.route('/')
+		.get(index.read);
 }

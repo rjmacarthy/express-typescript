@@ -1,3 +1,4 @@
+'use strict';
 /// <reference path='./typings/tsd.d.ts' />
 
 import express = require('express');
@@ -27,7 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //Routes
 
-config.globRoutes().then((files: Array<string>) => {
+config.globFiles('routes/**/*.js').then((files: Array<string>) => {
   _.forEach(files, (file: string) => {
     require(path.resolve(file))(app);
   });
@@ -49,6 +50,10 @@ config.globRoutes().then((files: Array<string>) => {
   });
 
 });
+
+// Controllers
+
+
 
 if (app.get('env') === 'development') {
   app.use((err: Error, req: express.Request, res: express.Response, next) => {
@@ -76,7 +81,5 @@ server.on('error', () => {
 server.on('listening', () => {
   console.log('started on port ' + port);
 })
-
-
 
 module.exports = app;

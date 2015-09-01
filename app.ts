@@ -27,12 +27,27 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //Routes
 
-app.use('/', index);
+config.globRoutes().then((files: Array<string>) => {
+  _.forEach(files, (file: string) => {
+    require(path.resolve(file))(app);
+  });
 
-// catch 404 and forward to error handler
-app.use(function(req: express.Request, res: express.Response, next: Function) {
-  var err: Error = new Error('Not Found');
-  next(err);
+  // catch 404 and forward to error handler
+  app.use(function(req: express.Request, res: express.Response, next: Function) {
+    var err: Error = new Error('Not Found');
+    next(err);
+  });
+
+  // production error handler
+  // no stacktraces leaked to user
+  app.use((err: any, req: express.Request, res: express.Response, next) => {
+    res.status(err.status || 500);
+    res.render('error', {
+      message: err.message,
+      error: {}
+    });
+  });
+
 });
 
 if (app.get('env') === 'development') {
@@ -44,22 +59,6 @@ if (app.get('env') === 'development') {
     });
   });
 }
-
-// production error handler
-// no stacktraces leaked to user
-app.use((err: any, req: express.Request, res: express.Response, next) => {
-  res.status(err.status || 500);
-  res.render('error', {
-    message: err.message,
-    error: {}
-  });
-});
-
-config.globRoutes().then((files : Array<string>) => {
-  _.forEach(files, (file: string) => {
-    require(path.resolve(file))(app);
-  });
-});
 
 
 // Start ther server
@@ -77,5 +76,7 @@ server.on('error', () => {
 server.on('listening', () => {
   console.log('started on port ' + port);
 })
+
+
 
 module.exports = app;

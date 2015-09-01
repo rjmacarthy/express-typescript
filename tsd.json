@@ -9,7 +9,7 @@
       "commit": "32f0a90dab26f70b206407ac24d4d622d0f0f408"
     },
     "node/node.d.ts": {
-      "commit": "32f0a90dab26f70b206407ac24d4d622d0f0f408"
+      "commit": "af76bf46025371c760d8fe8c03cf874428da6124"
     },
     "serve-favicon/serve-favicon.d.ts": {
       "commit": "32f0a90dab26f70b206407ac24d4d622d0f0f408"
@@ -27,6 +27,15 @@
       "commit": "32f0a90dab26f70b206407ac24d4d622d0f0f408"
     },
     "glob/glob.d.ts": {
+      "commit": "af76bf46025371c760d8fe8c03cf874428da6124"
+    },
+    "minimatch/minimatch.d.ts": {
+      "commit": "af76bf46025371c760d8fe8c03cf874428da6124"
+    },
+    "lodash/lodash.d.ts": {
+      "commit": "af76bf46025371c760d8fe8c03cf874428da6124"
+    },
+    "q/Q.d.ts": {
       "commit": "af76bf46025371c760d8fe8c03cf874428da6124"
     }
   }

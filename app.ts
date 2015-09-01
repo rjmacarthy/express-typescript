@@ -9,6 +9,7 @@ import bodyParser = require('body-parser');
 import http = require('http');
 import config = require('./config');
 import index = require('./routes/index.server.route');
+import _ = require('lodash');
 
 var app: express.Express = express();
 
@@ -53,6 +54,13 @@ app.use((err: any, req: express.Request, res: express.Response, next) => {
     error: {}
   });
 });
+
+config.globRoutes().then((files : Array<string>) => {
+  _.forEach(files, (file: string) => {
+    require(path.resolve(file))(app);
+  });
+});
+
 
 // Start ther server
 

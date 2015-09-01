@@ -2,7 +2,7 @@ module.exports = function(grunt) {
     grunt.initConfig({
     	watch : {
     		ts : {
-    			files: ['**/*.ts'],
+    			files: ['**/*.ts', "!node_modules/**/*.ts"],
    		 		tasks: ['ts:dev'],
     		}
     	},

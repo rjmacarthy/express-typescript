@@ -1,0 +1,1 @@
+"/home/richard/Websites/typescript/app.ts" "/home/richard/Websites/typescript/config.ts" "/home/richard/Websites/typescript/routes/index.server.route.ts" --removeComments --target ES5 --module commonjs

@@ -2,18 +2,31 @@
 /// <reference path='../typings/tsd.d.ts' />
 import express = require('express');
 import mongoose = require('mongoose');
+var Article: mongoose.Model<mongoose.Document> = mongoose.model('Article');
 
 class ArticleController {
-	public Article : mongoose.Model<mongoose.Document> = mongoose.model('Article');
-	
-	public readAll = (req : express.Request, res : express.Response, next : Function): void => {
-		this.Article.find((err : Error, docs : Array<mongoose.Document>)=>{
-			if(err){
+
+	public readAll = (req: express.Request, res: express.Response, next: Function): void => {
+		Article.find((err: Error, articles: Array<mongoose.Document>) => {
+			if (err) {
 				return res.status(400).send({
 					message: err
 				});
 			} else {
-				res.jsonp(docs);
+				res.jsonp(200, articles);
+			}
+		});
+	}
+
+	public create = (req: express.Request, res: express.Response, next: Function): void => {
+		var article = new Article(req.body);
+		Article.save((err: Error, article: mongoose.Document) => {
+			if (err) {
+				return res.status(400).send({
+					message: err
+				});
+			} else {
+				res.jsonp(200, article);
 			}
 		});
 	}

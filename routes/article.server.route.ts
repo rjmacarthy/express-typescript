@@ -13,8 +13,11 @@ class ArticleRoute {
 	
 	public static generateRoutes (app : express.Express) : void {
 		var self  = ArticleRoute;
-		app.route('/article')
-			.get(self._articleController.readAll);
+		app.route('/article/:id')
+			.get(self._articleController.readAll).
+			.post(self._articleController.create);
+
+		app.param('id', job.findById);
 	}
 }
 

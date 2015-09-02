@@ -1,5 +1,5 @@
 'use strict';
-/// <reference path='./typings/tsd.d.ts' />
+/// <reference path='../typings/tsd.d.ts' />
 
 import _ = require('lodash');
 import bodyParser = require('body-parser');
@@ -8,7 +8,7 @@ import cookieParser = require('cookie-parser');
 import express = require('express');
 import favicon = require('serve-favicon');
 import http = require('http');
-import index = require('./routes/index.server.route');
+import index = require('../routes/index.server.route');
 import logger = require('morgan');
 import mongoose = require('mongoose');
 import path = require('path');
@@ -22,7 +22,7 @@ module.exports = function(db) {
   }
   
   // view engine setup
-  app.set('views', path.join(__dirname, 'views'));
+  app.set('views', path.join(__dirname, '../views'));
   app.set('view engine', 'jade');
   
   // uncomment after placing your favicon in /public
@@ -31,7 +31,7 @@ module.exports = function(db) {
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(cookieParser());
-  app.use(express.static(path.join(__dirname, 'public')));
+  app.use(express.static(path.join(__dirname, '../public')));
   
   //Routes
   for(var route of config.globFiles(config.routes)) {

@@ -4,10 +4,10 @@
 import express = require('express');
 import favicon = require('serve-favicon');
 import http = require('http');
-import config = require('./config');
+import config = require('./config/config');
 
 // Init the express application
-var app = require('./app')();
+var app = require('./config/express')();
 
 var server: http.Server = http.createServer(app);
 

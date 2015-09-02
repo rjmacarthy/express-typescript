@@ -29,10 +29,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 //Routes
 
 config.globFiles('routes/**/*.js').then((files: Array<string>) => {
- 
-  for(var file of files){
+  
+  files.forEach((file)=>{
     require(path.resolve(file))(app);
-  }
+  });
+
 
   // catch 404 and forward to error handler
   app.use(function(req: express.Request, res: express.Response, next: Function) {
@@ -52,10 +53,6 @@ config.globFiles('routes/**/*.js').then((files: Array<string>) => {
 
 });
 
-// Controllers
-
-
-
 if (app.get('env') === 'development') {
   app.use((err: Error, req: express.Request, res: express.Response, next) => {
     res.status(err['status'] || 500);
@@ -65,7 +62,6 @@ if (app.get('env') === 'development') {
     });
   });
 }
-
 
 // Start ther server
 

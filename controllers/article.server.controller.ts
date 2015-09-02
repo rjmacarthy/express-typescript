@@ -20,7 +20,7 @@ class ArticleController {
 
 	public create = (req: express.Request, res: express.Response, next: Function): void => {
 		var article = new Article(req.body);
-		Article.save((err: Error, article: mongoose.Document) => {
+		article.save((err: Error, article: mongoose.Document) => {
 			if (err) {
 				return res.status(400).send({
 					message: err

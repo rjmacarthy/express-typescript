@@ -5,7 +5,6 @@
  */
 import mongoose = require('mongoose');
 
-
 /**
  * Article Schema
  */

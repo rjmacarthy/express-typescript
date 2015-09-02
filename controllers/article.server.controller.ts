@@ -4,13 +4,18 @@ import express = require('express');
 import mongoose = require('mongoose');
 
 class ArticleController {
-	public static Article : mongoose.Model<mongoose.Document> = mongoose.model('Article');
+	public Article : mongoose.Model<mongoose.Document> = mongoose.model('Article');
 	
-	constructor() {
-	}
-
-	public static readAll(req : express.Request, res : express.Response, next : Function) : void {
-		
+	public readAll = (req : express.Request, res : express.Response, next : Function): void => {
+		this.Article.find((err : Error, docs : Array<mongoose.Document>)=>{
+			if(err){
+				return res.status(400).send({
+					message: err
+				});
+			} else {
+				res.jsonp(docs);
+			}
+		});
 	}
 }
 

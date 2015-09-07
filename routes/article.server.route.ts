@@ -13,9 +13,14 @@ class ArticleRoute {
 	
 	public static generateRoutes (app : express.Express) : void {
 		var self  = ArticleRoute;
-		app.route("/article/:id?")
-			.get(self._articleController.readAll)
+		app.route("/api/article")
+			.get(self._articleController.list)
 			.post(self._articleController.create);
+
+		app.route("/api/article/:id")
+			.get(self._articleController.read);
+
+		app.param("id", self._articleController.articleById);
 
 	}
 }

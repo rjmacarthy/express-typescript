@@ -1,9 +1,9 @@
-'use strict';
-/// <reference path='../typings/tsd.d.ts' />
+"use strict";
+/// <reference path="../typings/tsd.d.ts" />
 /**
  * Module dependencies.
  */
-import mongoose = require('mongoose');
+import mongoose = require("mongoose");
 
 /**
  * Article Schema
@@ -15,15 +15,15 @@ var ArticleSchema : mongoose.Schema  = new mongoose.Schema({
   },
   title: {
     type: String,
-    default: '',
+    default: "",
     trim: true,
-    required: 'Title cannot be blank'
+    required: "Title cannot be blank"
   },
   content: {
     type: String,
-    default: '',
+    default: "",
     trim: true
   }
 });
 
-mongoose.model('Article', ArticleSchema);
+mongoose.model("Article", ArticleSchema);

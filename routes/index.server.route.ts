@@ -1,7 +1,7 @@
-'use strict';
-/// <reference path='../typings/tsd.d.ts' />
-import express = require('express');
-import index = require('../controllers/index.server.controller');
+"use strict";
+/// <reference path="../typings/tsd.d.ts" />
+import express = require("express");
+import index = require("../controllers/index.server.controller");
 
 class IndexRoute {
 	constructor(app : express.Express) {
@@ -10,8 +10,8 @@ class IndexRoute {
 	}
 	
 	public static generateRoutes (app : express.Express) : void {
-		app.route('/')
-			.get(index.read)
+		app.route("/")
+			.get(index.read);
 	}
 }
 

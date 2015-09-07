@@ -1,8 +1,8 @@
-'use strict';
-/// <reference path='../typings/tsd.d.ts' />
-import express = require('express');
-import mongoose = require('mongoose');
-var Article: mongoose.Model<mongoose.Document> = mongoose.model('Article');
+"use strict";
+/// <reference path="../typings/tsd.d.ts" />
+import express = require("express");
+import mongoose = require("mongoose");
+var Article: mongoose.Model<mongoose.Document> = mongoose.model("Article");
 
 class ArticleController {
 
@@ -16,11 +16,11 @@ class ArticleController {
 				res.jsonp(200, articles);
 			}
 		});
-	}
+	};
 
 	public create = (req: express.Request, res: express.Response, next: Function): void => {
-		var article = new Article(req.body);
-		article.save((err: Error, article: mongoose.Document) => {
+		var newArticle = new Article(req.body);
+		newArticle.save((err: Error, article: mongoose.Document) => {
 			if (err) {
 				return res.status(400).send({
 					message: err
@@ -29,7 +29,7 @@ class ArticleController {
 				res.jsonp(200, article);
 			}
 		});
-	}
+	};
 }
 
 export = ArticleController;

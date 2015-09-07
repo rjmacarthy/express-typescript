@@ -1,14 +1,13 @@
-/// <reference path='../typings/tsd.d.ts' />
+/// <reference path="../typings/tsd.d.ts" />
 
-import glob = require('glob');
-import Q = require('q');
-import _ = require('lodash');
+import glob = require("glob");
+import _ = require("lodash");
 
-class config {
+class Config {
 	public static port : number = 3000;
-	public static routes = 'routes/**/*.js';
-	public static models = 'models/**/*.js';
-	public static dbname = 'mongodb://localhost/express-typescript';
+	public static routes = "routes/**/*.js";
+	public static models = "models/**/*.js";
+	public static dbname = "mongodb://localhost/express-typescript";
 
 	public static globFiles(location : string) : Array<string> {
 		var files = glob.sync(location);
@@ -18,4 +17,4 @@ class config {
 	}
 }
 
-export = config;
+export = Config;

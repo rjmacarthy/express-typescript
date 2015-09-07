@@ -1,13 +1,14 @@
-# express-typescript
 Typescript and Express.js 
+====================
 
-An express project implemented using typescript
+An Express.js project implemented using Typescript with strongly typed objects:
 
 # Installation
+
+Clone the repository
 
 ```
 npm install 
 tsd install
 grunt
-
 ```

@@ -42,7 +42,7 @@ module.exports = function(grunt) {
             }
         },
         concurrent: {
-            default: ['express:dev', 'watch'],
+            default: ['ts:dev', 'express:dev', 'watch'],
             options: {
                 logConcurrentOutput: true,
                 limit: 10

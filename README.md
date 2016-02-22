@@ -10,5 +10,6 @@ Clone the repository
 ```
 npm install 
 tsd install
+grunt ts:dev
 grunt
 ```
